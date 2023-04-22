@@ -1,0 +1,217 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@media(max-width:480px) {
+    header {
+        flex-direction: column;
+        gap:10px;
+    }
+
+    header ul {
+        flex-direction: column;
+    }
+ 
+}
+
+body {
+    background-image: url(https://www.todofondos.net/wp-content/uploads/1280x720-Rick-Morty-Wallpaper-SpeedPaint-768x432.jpg);
+    padding: 30px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+header {
+    background-color: yellowgreen;
+    padding: 20px;
+    display: flex;
+
+    /* Cambio de eje Principal */
+    /* Manejo del eje principal, o sea , el X en un contenedor flex */
+    justify-content:space-between;
+
+    /* Manejo del eje secundario. o sea, el Y en un contenedor flex */
+    align-items: center;
+}
+
+.rickymorty{
+    width: 200px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.logo {
+    width: 300px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* header div img {
+    width: 150px;
+    background-color: black;
+} */
+
+nav {
+    /*  background-color: violet; */
+}
+
+nav ul {
+    list-style:none;
+    display: flex;
+}
+
+nav ul li {
+    background-color: brown;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10%;
+}
+
+nav ul li a {
+    text-decoration:none;
+    color: beige;
+    transition: background-color .5s;
+}
+  
+a:hover {
+    background-color: gold;
+    color:black;
+  }
+  
+
+/* main section img {
+    width: 250px;
+    display:flex;
+    border-radius: 10%;
+    
+} */
+
+.biografia {
+    background-color: darkolivegreen;
+    display: flex;
+    color: rgb(241, 229, 160);
+    padding: 30px;
+    margin: 20px;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.biografia img{
+    width: 200px;
+    margin: 10px;
+    border-radius: 10%;
+}
+
+.biografia div {
+    margin: 10px;
+    padding: 10px;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.sinopsis{
+    height: 50%;
+    margin: 20px;
+    padding: 30px;
+    display: flex ;
+    background-color:bisque;
+    border-radius: 10px;
+}
+
+.sinopsis img {
+    width: 350px;
+    margin: 10px;
+    border-radius: 10%;
+}
+
+.sinopsis div{
+    margin: 10px;
+    padding: 10px;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.titulo_personaje {
+    background-color:brown;
+    color: white;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+/* Estilo contenedor dinamico de personajes */
+.cont-personajes {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.cont-personaje {
+    background-color: burlywood;
+    background-image: url(https://cdn.pixabay.com/photo/2016/09/05/18/54/texture-1647380_960_720.jpg);
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.cont-personaje img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.cont-personaje h3 {
+    padding-bottom: 10px;
+}
+
+/* Estilos seccion Streaming */
+.vershow{
+    height: 50%;
+    margin: 20px;
+    padding: 30px;
+    display: flex ;
+    background-color:bisque;
+    border-radius: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+div h3 a {
+    text-decoration: none;
+}
+
+.vershow img {
+    width: 200px;
+    margin: 10px;
+    border-radius: 10%;
+}
+
+/* Estilos Footer */
+footer {
+    background-color: yellowgreen;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.git {
+    background-color: violet;
+    padding: 5px;
+    margin: 5px;
+}
+
+footer p {
+    padding: 5px;
+    margin: 10px;
+}
