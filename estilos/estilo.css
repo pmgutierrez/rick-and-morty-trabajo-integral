@@ -6,10 +6,8 @@
 
 body {
     background-image: url(https://www.todofondos.net/wp-content/uploads/1280x720-Rick-Morty-Wallpaper-SpeedPaint-768x432.jpg);
-    padding: 30px;
+    padding: 10px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    /* Asegura que el padding no cause un scroll horizontal en móviles */
-    padding: 10px; 
 }
 
 /* --- Estilos de Escritorio (Desktop) por defecto --- */
@@ -30,20 +28,26 @@ header {
     width: 300px;
 }
 
-nav ul {
-    list-style:none;
+/* Ocultar el botón de hamburguesa en escritorio */
+.hamburger {
+    display: none;
+}
+
+/* Estilos de la navegación en desktop */
+.nav-menu ul {
+    list-style: none;
     display: flex;
 }
 
-nav ul li {
+.nav-menu ul li {
     background-color: brown;
     padding: 10px;
     margin: 10px;
     border-radius: 10%;
 }
 
-nav ul li a {
-    text-decoration:none;
+.nav-menu ul li a {
+    text-decoration: none;
     color: beige;
     transition: background-color .5s;
 }
@@ -52,11 +56,11 @@ a:hover {
     background-color: gold;
     color:black;
 }
-  
-/* Estilos secciones (Biografía, Sinopsis, Ver Show) */
 
+/* Estilos secciones (Biografía, Sinopsis, Ver Show) */
+/* (Mantienen la estructura responsive anterior) */
 .biografia, .sinopsis, .vershow {
-    display: flex; /* Se mantienen como flex en desktop */
+    display: flex;
     margin: 20px 0;
     padding: 30px;
     border-radius: 10px;
@@ -123,7 +127,7 @@ a:hover {
     background-color: burlywood;
     background-image: url(https://cdn.pixabay.com/photo/2016/09/05/18/54/texture-1647380_960_720.jpg);
     padding: 20px;
-    width: 200px; /* Ancho fijo para desktop */
+    width: 200px;
     text-align: center;
     border-radius: 10px;
 }
@@ -180,7 +184,69 @@ footer p {
 /* 1. Breakpoint para Tablets y Móviles grandes (hasta 768px) */
 @media (max-width: 768px) {
     
-    /* Encabezado: Asegurar que las imágenes no sean demasiado grandes */
+    /* Mostrar el botón de hamburguesa */
+    .hamburger {
+        display: block;
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 0;
+        z-index: 20; /* Asegura que esté por encima de todo */
+        position: absolute; /* Para posicionarlo en la esquina */
+        top: 30px; 
+        right: 30px;
+        width: 30px;
+        height: 25px;
+    }
+    
+    /* Estilo del icono de hamburguesa (las tres barras) */
+    .hamburger span {
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: black;
+        margin-bottom: 5px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    
+    /* Ocultar la navegación por defecto en móvil */
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 0; /* Lo colocamos al inicio de la página */
+        left: 0;
+        width: 100%;
+        height: 100vh; /* Altura completa de la ventana */
+        background-color: yellowgreen;
+        z-index: 10;
+        padding-top: 80px; /* Espacio para que el menú no se solape con el header */
+        text-align: center;
+    }
+
+    /* Estilo para cuando la clase 'active' está presente (visible) */
+    .nav-menu.active {
+        display: block;
+    }
+    
+    /* Ajustes del menú vertical */
+    .nav-menu ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .nav-menu ul li {
+        width: 80%; /* Para que los ítems ocupen más espacio y sean fáciles de tocar */
+        margin: 15px auto;
+        padding: 15px;
+    }
+
+    /* Cambios del Header para que los logos se apilen */
+    header {
+        flex-direction: column;
+        align-items: flex-start; /* Alineación a la izquierda */
+        padding: 10px;
+    }
+
     .rickymorty {
         width: 150px;
     }
@@ -188,24 +254,22 @@ footer p {
         width: 250px;
     }
 
-    /* Secciones principales: Biografía, Sinopsis, Ver Show */
-    /* Fuerza que la imagen y el texto se apilen verticalmente */
+    /* Estilos de las secciones (Biografía, Sinopsis, Ver Show) */
     .biografia, .sinopsis, .vershow {
         flex-direction: column;
-        align-items: center; /* Centrar el contenido apilado */
+        align-items: center;
         padding: 15px;
     }
     
-    /* Ajuste de imágenes dentro de las secciones */
     .biografia img, .sinopsis img, .vershow img {
         width: 80%;
-        max-width: 300px; /* Limitar el tamaño máximo de la imagen */
+        max-width: 300px;
         margin-bottom: 15px;
     }
 
-    /* Tarjetas de Personajes: Permite 2 o 3 columnas que se adaptan */
+    /* Tarjetas de Personajes: 2 columnas */
     .cont-personaje {
-        width: 45%; /* Permite 2 tarjetas por fila con margen */
+        width: 45%; 
     }
 
     /* Footer: Apilar el contenido */
@@ -219,32 +283,16 @@ footer p {
 
 /* 2. Breakpoint para Móviles pequeños (hasta 480px) */
 @media (max-width: 480px) {
-    /* Encabezado: Apilar logo y menú de navegación */
-    header {
-        flex-direction: column;
-        gap:10px;
-    }
-
-    /* Menu de Navegación (Nav): Apilar los enlaces */
-    header nav ul {
-        flex-direction: column;
-    }
-
-    /* Ajustar tamaño de logos en el encabezado */
+    /* Header: Pequeños ajustes */
     .rickymorty {
         width: 100px;
     }
     .logo {
         width: 200px;
     }
-
-    /* Tarjetas de Personajes: Forzar a una sola columna */
+    
+    /* Tarjetas de Personajes: 1 columna */
     .cont-personaje {
-        width: 90%; /* Ocupa casi todo el ancho de la pantalla para una sola columna */
-    }
-
-    /* Footer: Pequeños ajustes finales */
-    footer {
-        padding: 10px;
+        width: 90%; 
     }
 }
