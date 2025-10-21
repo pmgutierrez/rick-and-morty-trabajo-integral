@@ -4,58 +4,30 @@
     box-sizing: border-box;
 }
 
-@media(max-width:480px) {
-    header {
-        flex-direction: column;
-        gap:10px;
-    }
-
-    header ul {
-        flex-direction: column;
-    }
- 
-}
-
 body {
     background-image: url(https://www.todofondos.net/wp-content/uploads/1280x720-Rick-Morty-Wallpaper-SpeedPaint-768x432.jpg);
     padding: 30px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    /* Asegura que el padding no cause un scroll horizontal en móviles */
+    padding: 10px; 
 }
+
+/* --- Estilos de Escritorio (Desktop) por defecto --- */
 
 header {
     background-color: yellowgreen;
     padding: 20px;
     display: flex;
-
-    /* Cambio de eje Principal */
-    /* Manejo del eje principal, o sea , el X en un contenedor flex */
-    justify-content:space-between;
-
-    /* Manejo del eje secundario. o sea, el Y en un contenedor flex */
+    justify-content: space-between;
     align-items: center;
 }
 
 .rickymorty{
     width: 200px;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
 }
 
 .logo {
     width: 300px;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* header div img {
-    width: 150px;
-    background-color: black;
-} */
-
-nav {
-    /*  background-color: violet; */
 }
 
 nav ul {
@@ -75,31 +47,27 @@ nav ul li a {
     color: beige;
     transition: background-color .5s;
 }
-  
+  
 a:hover {
     background-color: gold;
     color:black;
-  }
-  
+}
+  
+/* Estilos secciones (Biografía, Sinopsis, Ver Show) */
 
-/* main section img {
-    width: 250px;
-    display:flex;
-    border-radius: 10%;
-    
-} */
-
-.biografia {
-    background-color: darkolivegreen;
-    display: flex;
-    color: rgb(241, 229, 160);
+.biografia, .sinopsis, .vershow {
+    display: flex; /* Se mantienen como flex en desktop */
+    margin: 20px 0;
     padding: 30px;
-    margin: 20px;
-    font-size: 20px;
     border-radius: 10px;
 }
 
-.biografia img{
+.biografia {
+    background-color: darkolivegreen;
+    color: rgb(241, 229, 160);
+}
+
+.biografia img {
     width: 200px;
     margin: 10px;
     border-radius: 10%;
@@ -114,13 +82,8 @@ a:hover {
     justify-content: space-evenly;
 }
 
-.sinopsis{
-    height: 50%;
-    margin: 20px;
-    padding: 30px;
-    display: flex ;
-    background-color:bisque;
-    border-radius: 10px;
+.sinopsis, .vershow {
+    background-color: bisque;
 }
 
 .sinopsis img {
@@ -142,7 +105,7 @@ a:hover {
     background-color:brown;
     color: white;
     padding: 10px;
-    margin: 10px;
+    margin: 10px 0;
     text-align: center;
     border-radius: 10px;
 }
@@ -160,7 +123,7 @@ a:hover {
     background-color: burlywood;
     background-image: url(https://cdn.pixabay.com/photo/2016/09/05/18/54/texture-1647380_960_720.jpg);
     padding: 20px;
-    width: 200px;
+    width: 200px; /* Ancho fijo para desktop */
     text-align: center;
     border-radius: 10px;
 }
@@ -176,12 +139,6 @@ a:hover {
 
 /* Estilos seccion Streaming */
 .vershow{
-    height: 50%;
-    margin: 20px;
-    padding: 30px;
-    display: flex ;
-    background-color:bisque;
-    border-radius: 10px;
     justify-content: space-between;
     align-items: center;
 }
@@ -203,6 +160,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-top: 20px;
 }
 
 .git {
@@ -214,4 +172,79 @@ footer {
 footer p {
     padding: 5px;
     margin: 10px;
+}
+
+
+/* --- MEDIA QUERIES --- */
+
+/* 1. Breakpoint para Tablets y Móviles grandes (hasta 768px) */
+@media (max-width: 768px) {
+    
+    /* Encabezado: Asegurar que las imágenes no sean demasiado grandes */
+    .rickymorty {
+        width: 150px;
+    }
+    .logo {
+        width: 250px;
+    }
+
+    /* Secciones principales: Biografía, Sinopsis, Ver Show */
+    /* Fuerza que la imagen y el texto se apilen verticalmente */
+    .biografia, .sinopsis, .vershow {
+        flex-direction: column;
+        align-items: center; /* Centrar el contenido apilado */
+        padding: 15px;
+    }
+    
+    /* Ajuste de imágenes dentro de las secciones */
+    .biografia img, .sinopsis img, .vershow img {
+        width: 80%;
+        max-width: 300px; /* Limitar el tamaño máximo de la imagen */
+        margin-bottom: 15px;
+    }
+
+    /* Tarjetas de Personajes: Permite 2 o 3 columnas que se adaptan */
+    .cont-personaje {
+        width: 45%; /* Permite 2 tarjetas por fila con margen */
+    }
+
+    /* Footer: Apilar el contenido */
+    footer {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+}
+
+
+/* 2. Breakpoint para Móviles pequeños (hasta 480px) */
+@media (max-width: 480px) {
+    /* Encabezado: Apilar logo y menú de navegación */
+    header {
+        flex-direction: column;
+        gap:10px;
+    }
+
+    /* Menu de Navegación (Nav): Apilar los enlaces */
+    header nav ul {
+        flex-direction: column;
+    }
+
+    /* Ajustar tamaño de logos en el encabezado */
+    .rickymorty {
+        width: 100px;
+    }
+    .logo {
+        width: 200px;
+    }
+
+    /* Tarjetas de Personajes: Forzar a una sola columna */
+    .cont-personaje {
+        width: 90%; /* Ocupa casi todo el ancho de la pantalla para una sola columna */
+    }
+
+    /* Footer: Pequeños ajustes finales */
+    footer {
+        padding: 10px;
+    }
 }
